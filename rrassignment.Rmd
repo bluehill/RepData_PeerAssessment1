@@ -1,9 +1,5 @@
 # Reproducible Research: Peer Assessment 1
 
-```{r}
-
-```
-
 ## Loading and preprocessing the data
 
 load the data and convert date to format Date:
@@ -163,9 +159,12 @@ timeseries2=sapply(split(weekends$steps, weekends$interval), mean)
 intervals=c(names(timeseries1), names(timeseries2))
 means=c(as.numeric(timeseries1), as.numeric(timeseries2))
 weekday=c(rep("Weekday", length(timeseries1)), rep("Weekend", length(timeseries2)))
+#figuring out that to build the new data frame I had to do assign intervals as.numeric took frikin hours. Anway - new dataframe for the charts:
 reference=data.frame(as.numeric(intervals), means, weekday)
 
+#and finally.... the chart
 ggplot(data=reference, aes(x=as.numeric.intervals., y=means, group=weekday, colour=weekday)) + geom_line() + labs(title="Number of steps through the day by weekday and weekend") + facet_grid(. ~ weekday)
 
 
 ```
+Thanks for your time, hope that was all clear enough - have a nice day :)
